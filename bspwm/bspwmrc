@@ -1,0 +1,53 @@
+#! /bin/sh
+
+
+
+
+
+#### Autostart Functional Programs ####
+
+setxkbmap us &
+picom &
+nitrogen --restore &
+killall -q polybar
+$HOME/.config/polybar/launch.sh
+xfce4-power-manager &
+nm-applet &
+
+### Autostart Regular Programs ###
+### Configuration ###
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc monitor -d I II III IV V VI VII VIII
+
+bspc config border_width        0
+bspc config window_gap          5
+
+bspc config pointer_mod		mod4
+bspc config pointer_action1	move
+bspc config focus_follows_pointer true
+bspc config click_to_focus button1
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a 'Tor Browser' state=floating follow=on
+bspc rule -a Chromium desktop='^3' follow=on
+bspc rule -a Surf state=tiling
+bspc rule -a tabbed state=floating
+bspc rule -a Galculator state=floating
+bspc rule -a Plank focus=on above=on manage=on border=off
+bspc rule -a discord desktop='^4' follow=on
+bspc rule -a Skype desktop='^4' follow=on
+bspc rule -a supertux2 desktop='^7' follow=on
+bspc rule -a Nightly desktop='^2' follow=on
+bspc rule -a Nemo desktop='^5' follow=on
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+
+### Plank Dock ###
+#plank &
+
